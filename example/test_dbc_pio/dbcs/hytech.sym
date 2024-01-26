@@ -1,0 +1,12 @@
+FormatVersion=6.0 // Do not edit this line!
+Title="test"
+
+{SIGNALS}
+Sig=status bit
+
+{SENDRECEIVE}
+
+[test]
+ID=001h
+Len=8
+Sig=status 0
