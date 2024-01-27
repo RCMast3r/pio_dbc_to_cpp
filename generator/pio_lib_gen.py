@@ -107,7 +107,7 @@ else:
         os.makedirs(generated_dbc_file_dir, exist_ok=True)
         dbc_file_name = os.path.splitext(os.path.basename(dbc_file_name))[0] + ".dbc"
         cantools.database.dump_file(db, os.path.join(generated_dbc_file_dir, dbc_file_name))
-        
+        abs_path_to_dbc = generated_dbc_file_dir
     if not len(dbc_file):
         print("[dbcpio] ERROR: No file matched pattern:")
         print(f"user_dbcs: {user_dbc_file}")
@@ -128,6 +128,7 @@ client.containers.run(
     user=1000,
     volumes=[abs_path_to_dbc + ":/data", generated_src_dir + ":/out"],
     working_dir="/app",
+    stderr=True
 )
 
 env.Append(
